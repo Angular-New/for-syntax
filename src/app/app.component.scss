@@ -1,0 +1,13 @@
+ul {
+  margin: 20px 0 0 40px;
+  padding: 0;
+  list-style-type: none;
+
+  & li {
+    text-transform: capitalize;
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+}

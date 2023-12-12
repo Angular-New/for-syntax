@@ -1,5 +1,3 @@
-<ul>
-  @for (item of items; track item) {
-    <li>{{ item.title }}</li>
-  }
-</ul>
+@for (item of items$ | async;track trackItem) {
+  <f-item [item]="item" />
+}

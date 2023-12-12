@@ -1,28 +1,23 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-interface IItem {
-  title: string,
-  description: string
-}
-
-class Item implements IItem {
-  constructor(public title: string, public description: string) {
-    //
-  }
-}
+import { IItem } from './types';
+import { ItemComponent } from './components/item/item.component';
+import { AppService } from './app.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'f-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ItemComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  public readonly items: IItem[] = [
-    new Item('title 1', 'description 1'),
-    new Item('title 2', 'description 2'),
-    new Item('title 3', 'description 3'),
-  ];
+  public appService: AppService = inject(AppService);
+  public readonly items$: Observable<IItem[]> = this.appService.generateItems();
+
+  // writing our own tracking function, if we really need to
+  // but in most cases, the shorthand notation - track item.title - will be enough
+  public trackItem = (_: number, item: IItem): string => item.title;
 }

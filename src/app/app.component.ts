@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 export class AppComponent {
   private readonly appService: AppService = inject(AppService);
   public readonly items$: Observable<IItem[]> = this.appService.generateItems();
+  public readonly maps$: Observable<Map<string, string>> = this.appService.generateMap();
 
   // writing our own tracking function, if we really need to
   // but in most cases, the shorthand notation - track item.title - will be enough

@@ -3,3 +3,9 @@
 } @empty {
   <f-not-found />
 }
+
+<ul>
+  @for (entry of maps$ | async;track entry;let i = $index;let first = $first;let last = $last) {
+    <li>{{ i }}: {{ entry[0] }} - {{ entry[1] }} {{ first }}</li>
+  }
+</ul>

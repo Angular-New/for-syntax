@@ -16,4 +16,13 @@ export class AppService {
 
     return of(items);
   }
+
+  public generateMap(): Observable<Map<string, string>> {
+    const mapItems: Map<string, string> = new Map([
+      ['uno', 'first'],
+      ['duo', 'second'],
+    ]);
+
+    return of(mapItems);
+  }
 }

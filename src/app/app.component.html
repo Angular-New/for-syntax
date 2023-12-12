@@ -9,3 +9,20 @@
     <li>{{ i }}: {{ entry[0] }} - {{ entry[1] }} {{ first }}</li>
   }
 </ul>
+
+<h2>switch case</h2>
+
+@switch (color) {
+  @case (EColor.Black) {
+    <p>It's {{ EColor.Black }} color</p>
+  }
+  @case (EColor.Red) {
+    <p>It's {{ EColor.Red }} color</p>
+  }
+  @case (EColor.Blue) {
+    <p>It's {{ EColor.Blue }} color</p>
+  }
+  @default {
+    <p>It's unknown color</p>
+  }
+}

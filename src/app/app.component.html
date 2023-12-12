@@ -1,3 +1,5 @@
 @for (item of items$ | async;track trackItem) {
   <f-item [item]="item" />
+} @empty {
+  <f-not-found />
 }
